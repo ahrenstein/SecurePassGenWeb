@@ -29,12 +29,12 @@ class PassGenFunctions
             $upperDone = $lowerDone = $specialDone = $numberDone = false; //Set flags to determine if we have the required character types for the password complexity rules
             $iSeed = $this->stringToSeed($sPasswordSeed); //Convert our password seed to an integer so we can seed the random number generator
 
-            srand($iSeed); //Seed the random number generator
+            mt_srand($iSeed); //Seed the random number generator
 
             while (strlen($sPassword) < 8)
             {
 
-                  $nextChar = chr(rand(33,126));
+                  $nextChar = chr(mt_rand(33,126));
                   if ($upperDone != true AND ctype_upper($nextChar) == true) //Make sure we have at least 1 upper case character
                   {
                         $sPassword .= $nextChar;
