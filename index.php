@@ -54,5 +54,6 @@ if($DoIGen == "Generate Password") //Perform the secure password generation
 <input type="submit" name="GenOp" value="Generate Password" /> <!--Submit button-->
 <br><br><label for="SecdPass">DoE Compliant Password: </label><input type="text" name="secdpass" size="50" value="<?php echo $sSecdPass; ?>" /></br><br> <!--Output is sent to this text box-->
 </form>
+<br><br><b>Fork me on <a href="https://github.com/ahrenstein/SecurePassGenWeb">GitHub</a></b>
 </body>
 </html>
