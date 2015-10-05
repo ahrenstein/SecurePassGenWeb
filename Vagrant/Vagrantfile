@@ -1,0 +1,40 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+### This script will build two ubuntu 14.04 Vagrant VMs
+### Then set up a private network on them so they can communicate
+### Good for testing out client server stuff
+### The SERVER1 build block is heavily commented
+### The SERVER2 block (nearly identical) is not commented
+### Once you're comfortable with the syntax you can use the cleaner SERVER2 block as a template
+### Example provisioning for BASH and puppet is included
+### Modify as needed and then vagrant up
+### vagrant ssh chef-server to connect to each server
+
+Vagrant.configure("2") do |config|
+
+  #### SERVER1 (WEBSERVER)
+
+  config.vm.define :webserver do |webserver|
+
+    # Which base box to use
+    webserver.vm.box = "ubuntu/trusty64"
+    webserver.vm.hostname = "securepassgen.com"
+    webserver.vm.synced_folder "../SourceCode/", "/data/www/site", owner: "www-data", group: "www-data"
+
+    # virtualbox VM parameters (RAM, CPU etc)
+    webserver.vm.provider "virtualbox" do |v|
+      v.memory = 2048 
+    end
+
+    # Provision with plain old BASH
+    webserver.vm.provision :shell, :inline => "apt-get -y update"
+    webserver.vm.provision :shell, :inline => "apt-get -y install apache2 libapache2-mod-php5 php5-mcrypt"
+    webserver.vm.provision :shell, :inline => "cp /vagrant/site.conf /etc/apache2/sites-available/000-default.conf"
+    webserver.vm.provision :shell, :inline => "service apache2 restart"
+
+    # Private networking - so machines can speak to each other:
+    webserver.vm.network :private_network, ip: "192.168.33.30"
+
+  end
+end
