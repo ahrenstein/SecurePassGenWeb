@@ -1,15 +1,18 @@
 Secure Password Generator (Web Version)
 ==============
+
 I originally wrote this "software" in C# but that means it is limited to Windows users. That's no good, especially since I use a Mac. I decided to rewrite it in PHP so sys admins can run their own page, and use their OS of choice.
 
 Using the site
 ------------
+
 The first string is the fully qualified domain name (FQDN) of the server. (ie: mysql0017.server.doe.gov) The second string is a unique phrase (Seed Text) that you must keep secret.
 This string should always be the same. The Seed Text string is the phrase that when combined with the FQDN produces a DoE compliant password. It's the same password every time, so whoever knows the Seed String, can gain root on any server you use this on.
 In 180 days just change the Seed Text, and update the password on all of the servers.
 
 Is this secure?
 ------------
+
 That depends. Ideally you want to be paranoid, and run your own server. I recommend forcing SSL, and turning off access logs or the POST requests might contain the secret seed phrase you use. That's not good if the server
 gets compromised, because then all server FQDNs listed in the access log would be compromised too.
 
@@ -32,9 +35,16 @@ Yup that's a lot of requirements. DoE is in charge of nuclear research though, a
 
 Special Notes
 ------------
+
 Due to differences between C#, and PHP this tool will generate different passwords than the original Windows application. This may be something that is correctable, but
 I am not a programmer by trade, and I don't feel it is necessary to look for a fix for this. As an open source tool, you are welcome to fork the project, and fix it if you'd like.
 
 References
 ------------
+
 Based on the original here - https://github.com/ahrenstein/SecurePassGenLite
+
+
+Vagrant
+------------
+You can use the simple Vagrantfile setup to quickly get a local version of the site online to test out. Keep in mind that the vagrant box will have logs so it should not be treated as secure.
