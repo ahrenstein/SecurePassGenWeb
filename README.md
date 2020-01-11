@@ -11,13 +11,15 @@ This string should always be the same. The Seed Text string is the phrase that w
 In 180 days just change the Seed Text, and update the password on all of the servers.
 
 Is this secure?
-------------
+---------------
 
 The short answer?  
 ![no](readme-no.png)
 
 The long answer?  
-This type of password generation is completely frowned upon by anyone who knows what they're doing. This repo existed for a very specific purpose to fulfill a requirement that no longer exists because it was terrible.
+This type of password generation is completely frowned upon by anyone who knows what they're doing. This repo existed
+for a very specific purpose to fulfill a requirement that no longer exists because it was terrible.  
+**USE [1PASSWORD](https://1password.com/)**
 
 What is a DoE compliant password?
 ------------
