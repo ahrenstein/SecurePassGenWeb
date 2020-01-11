@@ -13,9 +13,11 @@ In 180 days just change the Seed Text, and update the password on all of the ser
 Is this secure?
 ------------
 
-That depends. Ideally you want to be paranoid, and run your own server. I recommend forcing SSL, and turning off access logs or the POST requests might contain the secret seed phrase you use. That's not good if the server
-gets compromised, because then all server FQDNs listed in the access log would be compromised too.
+The short answer?  
+![no](readme-no.png)
 
+The long answer?  
+This type of password generation is completely frowned upon by anyone who knows what they're doing. This repo existed for a very specific purpose to fulfill a requirement that no longer exists because it was terrible.
 
 What is a DoE compliant password?
 ------------
